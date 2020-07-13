@@ -4,6 +4,8 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { getCookie } from '../util/frontend/cookieHandler';
 
+//Code modifiziert. Original stammt aus https://github.com/vercel/next.js/blob/canary/examples/with-typescript-graphql/lib/apollo.ts
+
 // import { resolvers } from './localResolvers';
 // import { typeDefs } from './localTypeDefs';
 // import {

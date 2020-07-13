@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                 isDynamic={true}
                 activeClass={styles.active}
               >
-                about
+                .about
               </ScrollLink>
             </div>
             <div className={styles.link}>
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
                 isDynamic={true}
                 activeClass={styles.active}
               >
-                Technology
+                .technology
               </ScrollLink>
             </div>
             <div className={styles.link}>
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
                 isDynamic={true}
                 activeClass={styles.active}
               >
-                Projects
+                .projects
               </ScrollLink>
             </div>
           </div>

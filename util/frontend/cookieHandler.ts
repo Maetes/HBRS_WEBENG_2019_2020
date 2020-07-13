@@ -1,5 +1,4 @@
 import cookie from 'js-cookie';
-import next from 'next';
 
 export const setCookie = (key: string, value: any, next: any) => {
   if (process.browser) {
