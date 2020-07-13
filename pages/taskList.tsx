@@ -28,7 +28,6 @@ const TaskList = () => {
   }, [error]);
 
   if (error) {
-    console.log('error:', error);
     return <div>Error</div>;
   }
 

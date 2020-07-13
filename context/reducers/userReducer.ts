@@ -12,7 +12,6 @@ export const userReducer = (state: User, action: any) => {
   const { type, payload } = action;
   switch (type) {
     case 'SET_USER':
-      console.log('payload: ', payload);
       return {
         ...state,
         ...payload,

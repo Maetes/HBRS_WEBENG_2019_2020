@@ -10,7 +10,6 @@ export const navReducer = (state: Nav, action: any) => {
   const { type, payload } = action;
   switch (type) {
     case 'TOGGLE':
-      console.log(payload);
       return {
         ...state,
         show: payload,

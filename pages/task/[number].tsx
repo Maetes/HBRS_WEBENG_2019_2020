@@ -1,11 +1,12 @@
 import Body from '../../Components/layout/Body';
 import { useRouter } from 'next/router';
 import styles from './Task.module.css';
-import { useState, useEffect } from 'react';
-import { useStateValue } from '../../context/store';
 import { initializeApollo } from '../../hooks/useApollo';
 const ReactMarkdown = require('react-markdown');
-import CodeBlock from './CodeBlock';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 import {
   AllTaskIdsDocument,
@@ -40,7 +41,7 @@ const Task = ({ data }: TaskType) => {
         <p>Number: {number}</p>
         <ReactMarkdown
           className={styles.markDown}
-          source={'``` ' + '\n' + data.data.getTask.code + '\n' + ' ```'}
+          source={'``` ' + data.data.getTask.code + ' ```'}
           renderers={{ code: CodeBlock }}
         />
       </div>
@@ -63,7 +64,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, request }: any) {
-  console.log('request: ', request);
   const apolloClient = initializeApollo(request);
 
   const data = await apolloClient.query({
@@ -73,9 +73,26 @@ export async function getStaticProps({ params, request }: any) {
     },
   });
 
-  console.log(data);
-
   return { props: { data } };
+}
+
+//Class Codeblocks 1:1 übernommen aus https://gist.github.com/ibrahima/d21950a95aee3212e991a8404e238093
+
+class CodeBlock extends React.PureComponent {
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+    language: PropTypes.string,
+  };
+
+  static defaultProps = {
+    language: null,
+  };
+
+  render() {
+    const { language, value }: any = this.props;
+
+    return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
+  }
 }
 
 export default Task;

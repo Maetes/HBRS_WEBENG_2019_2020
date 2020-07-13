@@ -7,7 +7,6 @@ const Nav = () => {
   const [{ navState }, dispatch] = useStateValue();
 
   const toggle = () => {
-    console.log('navstate in nav: ', navState.show);
     dispatch({ type: 'TOGGLE', payload: !navState.show });
   };
 

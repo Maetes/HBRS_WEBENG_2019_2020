@@ -29,7 +29,6 @@ const Tile = <T extends Specialities>({
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    console.log(external);
     if (external) {
       window.location.href = tile.click as string;
     } else {

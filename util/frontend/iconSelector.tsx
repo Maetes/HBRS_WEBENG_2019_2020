@@ -181,7 +181,6 @@ const Icon = (props: Props) => {
           />
         );
       }
-      console.log(obj);
       return <>{obj}</>;
     case 'warning':
       for (let i = 0; i < count; ++i) {

@@ -11,8 +11,6 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
   // Users
   async getUser(_parent, _args, context, _info) {
     const email = authcheck(context);
-    console.log('email: ', email);
-    console.log('getUserResolver:', email);
     let user: any;
     try {
       user = await prisma.user.findOne({
