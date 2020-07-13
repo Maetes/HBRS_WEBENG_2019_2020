@@ -22,17 +22,6 @@ const IndexPage = () => {
           subHeader={'I use popular state of the art technologies'}
           id={'tech'}
         />
-        {/* <div
-          id={'proj'}
-          style={{
-            position: 'absolute',
-            padding: '25% 0 25% 0',
-            height: '1px',
-            top: '0%',
-          }}
-        >
-          a
-        </div> */}
         <TileCollection
           tiles={data!.allProjects}
           primeHeader={'Projects'}

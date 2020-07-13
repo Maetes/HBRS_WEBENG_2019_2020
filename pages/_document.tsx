@@ -21,7 +21,6 @@ class MyDocument extends Document {
             name='description'
             content='Martin Mueller - Webdeveloper from germany. Used stack: React, Next.js, Next, Mongo,MongoDB, Mysql, postgres, prisma, graphql, REST, Typescript'
           />
-
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://martinm.tech/' />
           <meta property='og:title' content='Martin Mueller Webdeveloper' />
