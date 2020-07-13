@@ -5,7 +5,7 @@ const Opener = () => {
     <div className={styles.container}>
       <div className={styles.textContainer}>
         <h1>
-          Hey 👋🏼 I'm Martin, a passionate Web developer with exeprience in
+          Hey 👋🏼 I'm Martin, a passionate web developer with exeprience in
           businesses
         </h1>
       </div>

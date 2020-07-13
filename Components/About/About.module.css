@@ -24,7 +24,6 @@
 .container li:before {
   content: '🚀 ';
   color: aqua;
-  font-weight: bold;
   font-size: 1.8rem;
 }
 
