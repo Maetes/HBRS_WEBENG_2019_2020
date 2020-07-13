@@ -11,7 +11,7 @@ const Nav = () => {
   };
 
   return (
-    <div className={!navState.show ? styles.show : styles.nav}>
+    <div className={navState.show ? styles.nav : styles.show}>
       <ScrollLink
         activeClass={styles.active}
         to='about'

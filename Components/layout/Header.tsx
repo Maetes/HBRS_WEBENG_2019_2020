@@ -8,7 +8,6 @@ import { useStateValue } from '../../context/store';
 import { removeCookie, getCookie } from '../../util/frontend/cookieHandler';
 import { useGetUserQuery } from '../../util/frontend/apollo/documents.graphql';
 import { useRouter } from 'next/router';
-import Nav from './Nav';
 
 fancyLoadingBar(Router);
 
@@ -61,7 +60,6 @@ const Header: React.FC = () => {
             <div className={styles.stripe2}></div>
             <div className={styles.stripe3}></div>
           </div>
-          {navState.show && <Nav />}
 
           <div className={styles.bigNav}>
             <div className={styles.link}>
