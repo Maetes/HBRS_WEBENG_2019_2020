@@ -1,15 +1,21 @@
 import Router from 'next/router';
-import { fancyLoadingBar } from './FancyLoadingBar';
 import styles from './Header.module.css';
 import Link from 'next/link';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useStateValue } from '../../context/store';
 import { removeCookie, getCookie } from '../../util/frontend/cookieHandler';
 import { useGetUserQuery } from '../../util/frontend/apollo/documents.graphql';
 import { useRouter } from 'next/router';
+import NProgress from 'nprogress';
 
-fancyLoadingBar(Router);
+if (typeof window !== 'undefined') {
+  NProgress.configure({ showSpinner: false });
+
+  Router.events.on('routeChangeStart', () => NProgress.start());
+  Router.events.on('routeChangeComplete', () => NProgress.done());
+  Router.events.on('routeChangeError', () => NProgress.done());
+}
 
 const Header: React.FC = () => {
   const [{ navState, userState }, dispatch] = useStateValue();

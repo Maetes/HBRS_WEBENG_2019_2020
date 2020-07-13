@@ -7,6 +7,7 @@ import { rootInitialState, rootReducer } from '../context/rootReducer';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
+import '../node_modules/nprogress/nprogress.css';
 
 config.autoAddCss = true;
 
