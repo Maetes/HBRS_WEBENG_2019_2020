@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource mysql {
-  provider = process.env.DB
-  url      = process.env.DB_CONNECTION
+  provider = "mysql"
+  url      = "mysql://USER369473_cl:Mixer!112233@rngs.lima-db.de:3306/db_369473_11"
 }
 
 model Project {
