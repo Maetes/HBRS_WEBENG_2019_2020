@@ -10,7 +10,7 @@ import { NextComponentType, NextPageContext } from 'next';
 import { InitialStateType } from './rootReducer';
 
 // Die Idee der Nutzung des StateContextes zusammen mit dem Use Reducer Hook wurde hier entnommen:
-//
+// https://medium.com/simply/state-management-with-react-hooks-and-context-api-at-10-lines-of-code-baf6be8302c
 
 interface state {
   reducer: (
