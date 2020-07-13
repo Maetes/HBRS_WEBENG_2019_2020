@@ -41,7 +41,7 @@ const Task = ({ data }: TaskType) => {
         <p>Number: {number}</p>
         <ReactMarkdown
           className={styles.markDown}
-          source={'``` ' + data.data.getTask.code + ' ```'}
+          source={'```js' + '\n' + data.data.getTask.code + '\n' + '```'}
           renderers={{ code: CodeBlock }}
         />
       </div>
@@ -76,6 +76,7 @@ export async function getStaticProps({ params, request }: any) {
   return { props: { data } };
 }
 
+//Syntax Highlighter
 //Class Codeblocks 1:1 übernommen aus https://gist.github.com/ibrahima/d21950a95aee3212e991a8404e238093
 
 class CodeBlock extends React.PureComponent {
