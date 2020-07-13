@@ -1,0 +1,149 @@
+query AllTechs {
+  allTechs {
+    id
+    name
+    beschreibung
+    pic
+  }
+}
+
+query AllProjects {
+  allProjects {
+    name
+    beschreibung
+    url
+    click
+  }
+}
+
+query AllTasks {
+  allTasks {
+    name
+    beschreibung
+    code
+    click
+  }
+}
+
+query AllUsers {
+  allUsers {
+    nachname
+    email
+    id
+  }
+}
+
+query GetTask($name: String!) {
+  getTask(name: $name) {
+    name
+    beschreibung
+    code
+    click
+  }
+}
+
+query AllData {
+  allProjects {
+    name
+    beschreibung
+    url
+  }
+  allTasks {
+    name
+    beschreibung
+    code
+  }
+  allUsers {
+    nachname
+    email
+    id
+  }
+  allTechs {
+    id
+    name
+    beschreibung
+    pic
+  }
+}
+
+query AllPublicData {
+  allProjects {
+    name
+    beschreibung
+    url
+    click
+  }
+  allTechs {
+    id
+    name
+    beschreibung
+    pic
+  }
+}
+
+query AllTaskIds {
+  allTaskIds {
+    name
+  }
+}
+
+mutation SignIn($email: String!, $password: String!) {
+  signIn(email: $email, password: $password) {
+    token
+    user {
+      email
+      title
+      nachname
+    }
+    message
+  }
+}
+
+mutation CreateUser(
+  $email: String!
+  $password: String!
+  $nachname: String!
+  $title: String!
+) {
+  createUser(
+    email: $email
+    password: $password
+    nachname: $nachname
+    title: $title
+  ) {
+    token
+    user {
+      email
+      title
+      nachname
+    }
+  }
+}
+
+mutation createTask(
+  $name: String!
+  $beschreibung: String!
+  $click: String!
+  $code: String!
+) {
+  createTask(
+    name: $name
+    beschreibung: $beschreibung
+    click: $click
+    code: $code
+  ) {
+    name
+    beschreibung
+    code
+    click
+  }
+}
+
+# authQuery for checking whether user is valid logged in - authorization
+query GetUser {
+  getUser {
+    email
+    nachname
+    title
+  }
+}

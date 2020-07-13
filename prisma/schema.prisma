@@ -3,28 +3,31 @@ generator client {
 }
 
 datasource mysql {
-  provider = "mysql"
-  url      = "mysql://USER369473_cl:Mixer!112233@rngs.lima-db.de:3306/db_369473_11"
+  provider = process.env.DB
+  url      = process.env.DB_CONNECTION
 }
 
 model Project {
   beschreibung String?
+  click        String
   id           Int     @default(autoincrement()) @id
   name         String  @unique
   url          String
 }
 
 model Task {
-  beschreibung String?
-  code         String?
-  id           Int     @default(autoincrement()) @id
-  name         String  @unique
+  beschreibung String
+  click        String
+  code         String
+  id           Int    @default(autoincrement()) @id
+  name         String @unique
 }
 
 model Tech {
   beschreibung String?
   id           Int     @default(autoincrement()) @id
   name         String  @unique
+  pic          String
 }
 
 model User {

@@ -1,0 +1,51 @@
+.container {
+  background-color: white;
+  width: 100%;
+  padding: 15% 0 15% 0;
+  /* padding: 29% 0 29% 0; */
+}
+
+/* @media screen and (min-width: 850px) {
+  .container {
+    margin: 10% 0 10% 0;
+     padding: 10% 0 10% 0; 
+  }
+} 
+*/
+
+.container p {
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.container ul {
+  list-style: none;
+}
+.container li:before {
+  content: 'λ ';
+  color: aqua;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.container li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  padding: 1% 0 1% 0;
+  font-weight: bold;
+  height: 30%;
+}
+
+.techContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

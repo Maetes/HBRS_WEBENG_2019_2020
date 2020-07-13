@@ -1,76 +1,130 @@
 import Router from 'next/router';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
 import { fancyLoadingBar } from './FancyLoadingBar';
-import { User } from '@prisma/client';
 import styles from './Header.module.css';
 import Link from 'next/link';
-
-export const GET_USER = gql`
-  query getAllUser {
-    allUsers {
-      title
-      nachname
-      email
-    }
-  }
-`;
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { useEffect, useRef } from 'react';
+import { useStateValue } from '../../context/store';
+import { removeCookie, getCookie } from '../../util/frontend/cookieHandler';
+import { useGetUserQuery } from '../../util/frontend/apollo/documents.graphql';
+import { useRouter } from 'next/router';
+import Nav from './Nav';
 
 fancyLoadingBar(Router);
 
 const Header: React.FC = () => {
-  const { loading, data } = useQuery<User>(GET_USER);
+  const [{ navState, userState }, dispatch] = useStateValue();
+  const { data, loading, error } = useGetUserQuery();
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   if (!user.username) {
-  //     async () => {
-  //       const response = await signin(user, dispatch);
-  //       if (response.error) {
-  //       } else {
-  //         setCookieLocalStorage(response, () => {});
-  //       }
-  //     };
-  //   }
-  // }, []);
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
+  useEffect(() => {
+    if (!userState.email) {
+      if (getCookie('user', null)) {
+        if (!error) {
+          dispatch({ type: 'SET_USER', payload: data?.getUser });
+        }
+      }
+    }
+  }, [data]);
+
+  const logout = () => {
+    removeCookie('user', () => null);
+    dispatch({ type: 'REMOVE_USER', payload: null });
+  };
+
+  const toggleNav = () => {
+    dispatch({ type: 'TOGGLE', payload: !navState.show });
+  };
 
   return (
-    <div>
-      <ul className={styles.headerList}>
-        <li>
-          <Link href='/'>
-            <a className={styles.active}>Home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/blog'>
-            <a>Blog</a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/contact'>
-            <a>Contact</a>
-          </Link>
-        </li>
-        <li>
-          {data && data.title && (
-            <Link href='/cards'>
-              <a>Cards</a>
+    <div className={styles.nav}>
+      <div className={styles.martin}>
+        <Link href='/'>
+          <a className={(styles.active, styles.bold)} onClick={scrollToTop}>
+            <span className={styles.lambda}>🚀</span> Martin Mueller
+          </a>
+        </Link>
+      </div>
+      {!userState.title && router.pathname !== '/auth' && (
+        <>
+          <div
+            className={
+              navState.show ? styles.switch : styles.hamburgerContainer
+            }
+            onClick={toggleNav}
+          >
+            <div className={styles.stripe1}></div>
+            <div className={styles.stripe2}></div>
+            <div className={styles.stripe3}></div>
+          </div>
+          {navState.show && <Nav />}
+
+          <div className={styles.bigNav}>
+            <div className={styles.link}>
+              <ScrollLink
+                to='about'
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                isDynamic={true}
+                activeClass={styles.active}
+              >
+                about
+              </ScrollLink>
+            </div>
+            <div className={styles.link}>
+              <ScrollLink
+                to='tech'
+                spy={true}
+                smooth={true}
+                offset={0}
+                duration={500}
+                isDynamic={true}
+                activeClass={styles.active}
+              >
+                Technology
+              </ScrollLink>
+            </div>
+            <div className={styles.link}>
+              <ScrollLink
+                to='proj'
+                spy={true}
+                smooth={true}
+                offset={70}
+                duration={500}
+                isDynamic={true}
+                activeClass={styles.active}
+              >
+                Projects
+              </ScrollLink>
+            </div>
+          </div>
+        </>
+      )}
+      {userState.title !== '' && (
+        <div className={styles.loggedIn}>
+          <div className={styles.item}>
+            {userState.title} {' ' + userState.nachname}
+          </div>
+          <div className={styles.item}>
+            <Link href='/taskList'>
+              <a className={(styles.active, styles.bold)}>Tasklist</a>
             </Link>
-          )}
-        </li>
-        <li className={styles.headerItemRight}>
-          {!data?.email && (
-            <Link href='/auth/auth'>
-              <a>SignIn-/up</a>
+          </div>
+          <div className={styles.item}>
+            <Link href='/'>
+              <a className={(styles.active, styles.bold)} onClick={logout}>
+                Logout
+              </a>
             </Link>
-          )}
-          {data && data.title && (
-            <Link href='/auth/auth'>
-              <a>{data.nachname}</a>
-            </Link>
-          )}
-        </li>
-      </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

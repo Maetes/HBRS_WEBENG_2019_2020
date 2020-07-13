@@ -1,0 +1,100 @@
+.container {
+  background-color: rgba(241, 241, 241, 0.5);
+  display: flex;
+  height: 30%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textContainer {
+  width: 80%;
+}
+
+.container h1 {
+  text-align: left;
+  font-size: 4rem;
+  font-weight: lighter;
+}
+
+.left {
+  align-self: center;
+}
+
+.left ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+.left li {
+  margin: 1rem 0 0 0;
+}
+
+.left li:hover {
+  list-style-type: disc;
+  color: blue;
+}
+
+.left a,
+.left a:active,
+.left a:visited,
+.left a:link {
+  text-decoration: none;
+  color: black;
+}
+
+.left a:hover {
+  color: blue;
+  cursor: pointer;
+  list-style-type: disc;
+  text-decoration: underline;
+}
+
+.middle {
+  align-self: flex-end;
+  font-size: 0.7rem;
+  font-weight: lighter;
+}
+
+.right {
+  width: 35%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.right div {
+  margin: 1.3rem 1.3rem 0 0;
+  height: 2rem;
+  width: 2rem;
+  background-size: cover;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: 0.5s;
+}
+
+@media screen and (min-width: 600px) {
+  .right {
+    width: 25%;
+  }
+  .right div {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .right {
+    width: 25%;
+  }
+  .right div {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+}
+
+.right div:hover {
+  cursor: pointer;
+  filter: grayscale(0%);
+}

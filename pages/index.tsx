@@ -1,71 +1,62 @@
-import { initializeApollo } from '../apollo/useApollo';
 import Body from '../Components/layout/Body';
-import { GET_USER } from '../Components/layout/Header';
-import { useMutation, useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-
-export const SET_CURRENT_USER = gql`
-  mutation setCurrentUser(
-    $email: String!
-    $nachname: String!
-    $title: String!
-  ) {
-    currentUser(email: $email, nachname: $nachname, title: $title) @client
-  }
-`;
-
-export const GET_CURRENT_USER = gql`
-  query getCurrentUser {
-    getCurrentUser @client {
-      email
-      nachname
-      title
-    }
-  }
-`;
+import { initializeApollo } from '../hooks/useApollo';
+import About from '../Components/About/About.component';
+import TileCollection from '../Components/TileCollection/TileCollection.component';
+import Opener from '../Components/Opener/Opener.component';
+import {
+  useAllPublicDataQuery,
+  AllPublicDataDocument,
+} from '../util/frontend/apollo/documents.graphql';
 
 const IndexPage = () => {
-  const [setCurrentUser] = useMutation(SET_CURRENT_USER);
-  const { loading, error, data } = useQuery(GET_CURRENT_USER);
+  let { data } = useAllPublicDataQuery();
+
   return (
     <Body>
       <>
-        <div className=''>This is the Index page</div>
-        <button
-          onClick={async () => {
-            const test = await setCurrentUser({
-              variables: { email: 'o@o.com', nachname: 'nn', title: 'end' },
-            });
-            return console.log(
-              'execute: ',
-              test,
-              'loading, error:',
-              loading,
-              error,
-              'data: ' + data
-            );
+        <Opener />
+        <About id='about' />
+        <TileCollection
+          tiles={data!.allTechs}
+          primeHeader={'Technologies'}
+          subHeader={'I use popular state of the art technologies'}
+          id={'tech'}
+        />
+        {/* <div
+          id={'proj'}
+          style={{
+            position: 'absolute',
+            padding: '25% 0 25% 0',
+            height: '1px',
+            top: '0%',
           }}
         >
-          PressMe
-        </button>
+          a
+        </div> */}
+        <TileCollection
+          tiles={data!.allProjects}
+          primeHeader={'Projects'}
+          subHeader={'Some of my (online) projects'}
+          external={true}
+          id={'proj'}
+        />
       </>
     </Body>
   );
 };
 
-// export async function getStaticProps() {
-//   const apolloClient = initializeApollo();
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
 
-//   await apolloClient.query({
-//     query: GET_USER,
-//   });
+  await apolloClient.query({
+    query: AllPublicDataDocument,
+  });
 
-//   return {
-//     props: {
-//       initialApolloState: apolloClient.cache.extract(),
-//     },
-//     unstable_revalidate: 1,
-//   };
-// }
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  };
+}
 
 export default IndexPage;

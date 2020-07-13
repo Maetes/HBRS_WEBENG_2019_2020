@@ -1,6 +1,7 @@
 
 
-CREATE TABLE db_369473_11.User (
+CREATE TABLE db_369473_11.User
+(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   nachname VARCHAR(255) NOT NULL,
@@ -8,22 +9,29 @@ CREATE TABLE db_369473_11.User (
   password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE db_369473_11.Task (
+CREATE TABLE db_369473_11.Task
+(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   beschreibung VARCHAR(255),
-  code VARCHAR(255)
+  code MEDIUMTEXT,
+  click VARCHAR(255)
 );
 
-CREATE TABLE db_369473_11.Project (
+CREATE TABLE db_369473_11.Project
+(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   url INTEGER NOT NULL,
-beschreibung VARCHAR(255)
+  beschreibung VARCHAR(255),
+  click VARCHAR(500)
 );
 
-CREATE TABLE db_369473_11.Tech (
+CREATE TABLE db_369473_11.Tech
+(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-beschreibung VARCHAR(255)
+  beschreibung VARCHAR(255),
+  pic VARCHAR
+  (255)
 );

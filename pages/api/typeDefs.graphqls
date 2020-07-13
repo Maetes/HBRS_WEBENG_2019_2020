@@ -1,0 +1,114 @@
+type Mutation {
+
+  createProject(beschreibung: String!, name: String!, url: String!, click: String!): Project!
+
+  createTask(
+    beschreibung: String!
+    code: String!
+    name: String!
+    click: String!
+  ): Task!
+
+  createTech(beschreibung: String!, name: String!, pic: String!): Tech!
+
+  createUser(
+    email: String!
+    nachname: String!
+    password: String!
+    title: String!
+  ): AuthPayload!
+
+  deleteProject(projectId: Int!): Project!
+
+  deleteTask(taskId: Int!): Task!
+
+  deleteTech(techId: Int!): Tech!
+
+  deleteUser(userId: Int!): User
+
+  updateProject(
+    beschreibung: String!
+    name: String!
+    oldName: String!
+    url: String!
+    click: String!
+  ): Project!
+
+  updateTask(
+    beschreibung: String!
+    code: String!
+    name: String!
+    oldName: String!
+    click: String!
+  ): Task!
+
+  updateTech(
+    beschreibung: String!
+    name: String!
+    oldName: String!
+    pic: String!
+  ): Tech!
+  
+  updateUser(
+    email: String!
+    nachname: String!
+    oldMail: String!
+    password: String!
+    title: String!
+  ): User!
+
+  signIn(email: String! password: String!): AuthPayload!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+  message: String
+}
+
+type Project {
+  beschreibung: String
+  id: Int!
+  name: String!
+  url: String!
+  click: String!
+}
+
+type Taskid{
+  name: String!
+}
+
+type Query {
+  allProjects: [Project!]!
+  allTasks: [Task!]!
+  allTechs: [Tech!]!
+  allUsers: [User!]!
+  allTaskIds: [Taskid!]!
+  getProject(name: String!): Project!
+  getTask(name: String!): Task!
+  getTech(name: String!): Tech!
+  getUser: User!
+}
+
+type Task {
+  id: Int!
+  name: String!
+  beschreibung: String!
+  code: String!
+  click: String!
+}
+
+type Tech {
+  beschreibung: String
+  id: Int!
+  name: String!
+  pic: String!
+}
+
+type User {
+  email: String!
+  id: Int!
+  nachname: String!
+  password: String!
+  title: String
+}

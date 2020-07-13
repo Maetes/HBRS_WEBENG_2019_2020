@@ -1,0 +1,50 @@
+.inverted {
+  background-color: blue;
+  color: black;
+  border: 1px solid black;
+}
+
+.inverted:hover {
+  background-color: black;
+  color: blue;
+  border: none;
+}
+
+.button {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid blue;
+}
+
+.disabled {
+  background-color: blue;
+  opacity: 0.3;
+  border: 1px solid blue;
+}
+
+.disabled:hover {
+  background-color: blue;
+  opacity: 0.3;
+  border: 1px solid blue;
+  cursor: not-allowed;
+}
