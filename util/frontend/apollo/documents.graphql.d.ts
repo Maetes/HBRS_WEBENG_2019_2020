@@ -6,314 +6,350 @@ import * as ApolloReactCommon from '@apollo/react-common';
 import * as ApolloReactComponents from '@apollo/react-components';
 import * as ApolloReactHooks from '@apollo/react-hooks';
 export declare type Maybe<T> = T | null;
-export declare type Exact<T extends {
+export declare type Exact<
+  T extends {
     [key: string]: any;
-}> = {
-    [K in keyof T]: T[K];
+  }
+> = {
+  [K in keyof T]: T[K];
 };
 export declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export declare type Scalars = {
-    ID: string;
-    String: string;
-    Boolean: boolean;
-    Int: number;
-    Float: number;
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
 };
 export declare type AuthPayload = {
-    __typename?: 'AuthPayload';
-    token?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    message?: Maybe<Scalars['String']>;
+  __typename?: 'AuthPayload';
+  token?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  message?: Maybe<Scalars['String']>;
 };
 export declare type Mutation = {
-    __typename?: 'Mutation';
-    createProject: Project;
-    createTask: Task;
-    createTech: Tech;
-    createUser: AuthPayload;
-    deleteProject: Project;
-    deleteTask: Task;
-    deleteTech: Tech;
-    deleteUser?: Maybe<User>;
-    updateProject: Project;
-    updateTask: Task;
-    updateTech: Tech;
-    updateUser: User;
-    signIn: AuthPayload;
+  __typename?: 'Mutation';
+  createProject: Project;
+  createTask: Task;
+  createTech: Tech;
+  createUser: AuthPayload;
+  deleteProject: Project;
+  deleteTask: Task;
+  deleteTech: Tech;
+  deleteUser?: Maybe<User>;
+  updateProject: Project;
+  updateTask: Task;
+  updateTech: Tech;
+  updateUser: User;
+  signIn: AuthPayload;
 };
 export declare type MutationCreateProjectArgs = {
-    beschreibung: Scalars['String'];
-    name: Scalars['String'];
-    url: Scalars['String'];
-    click: Scalars['String'];
+  beschreibung: Scalars['String'];
+  name: Scalars['String'];
+  url: Scalars['String'];
+  click: Scalars['String'];
 };
 export declare type MutationCreateTaskArgs = {
-    beschreibung: Scalars['String'];
-    code: Scalars['String'];
-    name: Scalars['String'];
-    click: Scalars['String'];
+  beschreibung: Scalars['String'];
+  code: Scalars['String'];
+  name: Scalars['String'];
+  click: Scalars['String'];
 };
 export declare type MutationCreateTechArgs = {
-    beschreibung: Scalars['String'];
-    name: Scalars['String'];
-    pic: Scalars['String'];
+  beschreibung: Scalars['String'];
+  name: Scalars['String'];
+  pic: Scalars['String'];
 };
 export declare type MutationCreateUserArgs = {
-    email: Scalars['String'];
-    nachname: Scalars['String'];
-    password: Scalars['String'];
-    title: Scalars['String'];
+  email: Scalars['String'];
+  nachname: Scalars['String'];
+  password: Scalars['String'];
+  title: Scalars['String'];
 };
 export declare type MutationDeleteProjectArgs = {
-    projectId: Scalars['Int'];
+  projectId: Scalars['Int'];
 };
 export declare type MutationDeleteTaskArgs = {
-    taskId: Scalars['Int'];
+  taskId: Scalars['Int'];
 };
 export declare type MutationDeleteTechArgs = {
-    techId: Scalars['Int'];
+  techId: Scalars['Int'];
 };
 export declare type MutationDeleteUserArgs = {
-    userId: Scalars['Int'];
+  userId: Scalars['Int'];
 };
 export declare type MutationUpdateProjectArgs = {
-    beschreibung: Scalars['String'];
-    name: Scalars['String'];
-    oldName: Scalars['String'];
-    url: Scalars['String'];
-    click: Scalars['String'];
+  beschreibung: Scalars['String'];
+  name: Scalars['String'];
+  oldName: Scalars['String'];
+  url: Scalars['String'];
+  click: Scalars['String'];
 };
 export declare type MutationUpdateTaskArgs = {
-    beschreibung: Scalars['String'];
-    code: Scalars['String'];
-    name: Scalars['String'];
-    oldName: Scalars['String'];
-    click: Scalars['String'];
+  beschreibung: Scalars['String'];
+  code: Scalars['String'];
+  name: Scalars['String'];
+  oldName: Scalars['String'];
+  click: Scalars['String'];
 };
 export declare type MutationUpdateTechArgs = {
-    beschreibung: Scalars['String'];
-    name: Scalars['String'];
-    oldName: Scalars['String'];
-    pic: Scalars['String'];
+  beschreibung: Scalars['String'];
+  name: Scalars['String'];
+  oldName: Scalars['String'];
+  pic: Scalars['String'];
 };
 export declare type MutationUpdateUserArgs = {
-    email: Scalars['String'];
-    nachname: Scalars['String'];
-    oldMail: Scalars['String'];
-    password: Scalars['String'];
-    title: Scalars['String'];
+  email: Scalars['String'];
+  nachname: Scalars['String'];
+  oldMail: Scalars['String'];
+  password: Scalars['String'];
+  title: Scalars['String'];
 };
 export declare type MutationSignInArgs = {
-    email: Scalars['String'];
-    password: Scalars['String'];
+  email: Scalars['String'];
+  password: Scalars['String'];
 };
 export declare type Project = {
-    __typename?: 'Project';
-    beschreibung?: Maybe<Scalars['String']>;
-    id: Scalars['Int'];
-    name: Scalars['String'];
-    url: Scalars['String'];
-    click: Scalars['String'];
+  __typename?: 'Project';
+  beschreibung?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  url: Scalars['String'];
+  click: Scalars['String'];
 };
 export declare type Query = {
-    __typename?: 'Query';
-    allProjects: Array<Project>;
-    allTasks: Array<Task>;
-    allTechs: Array<Tech>;
-    allUsers: Array<User>;
-    allTaskIds: Array<Taskid>;
-    getProject: Project;
-    getTask: Task;
-    getTech: Tech;
-    getUser: User;
+  __typename?: 'Query';
+  allProjects: Array<Project>;
+  allTasks: Array<Task>;
+  allTechs: Array<Tech>;
+  allUsers: Array<User>;
+  allTaskIds: Array<Taskid>;
+  getProject: Project;
+  getTask: Task;
+  getTech: Tech;
+  getUser: User;
 };
 export declare type QueryGetProjectArgs = {
-    name: Scalars['String'];
+  name: Scalars['String'];
 };
 export declare type QueryGetTaskArgs = {
-    name: Scalars['String'];
+  name: Scalars['String'];
 };
 export declare type QueryGetTechArgs = {
-    name: Scalars['String'];
+  name: Scalars['String'];
 };
 export declare type Task = {
-    __typename?: 'Task';
-    id: Scalars['Int'];
-    name: Scalars['String'];
-    beschreibung: Scalars['String'];
-    code: Scalars['String'];
-    click: Scalars['String'];
+  __typename?: 'Task';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  beschreibung: Scalars['String'];
+  code: Scalars['String'];
+  click: Scalars['String'];
 };
 export declare type Taskid = {
-    __typename?: 'Taskid';
-    name: Scalars['String'];
+  __typename?: 'Taskid';
+  name: Scalars['String'];
 };
 export declare type Tech = {
-    __typename?: 'Tech';
-    beschreibung?: Maybe<Scalars['String']>;
-    id: Scalars['Int'];
-    name: Scalars['String'];
-    pic: Scalars['String'];
+  __typename?: 'Tech';
+  beschreibung?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  pic: Scalars['String'];
 };
 export declare type User = {
-    __typename?: 'User';
-    email: Scalars['String'];
-    id: Scalars['Int'];
-    nachname: Scalars['String'];
-    password: Scalars['String'];
-    title?: Maybe<Scalars['String']>;
+  __typename?: 'User';
+  email: Scalars['String'];
+  id: Scalars['Int'];
+  nachname: Scalars['String'];
+  password: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
 };
 export declare type AllTechsQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllTechsQuery = ({
-    __typename?: 'Query';
+export declare type AllTechsQuery = {
+  __typename?: 'Query';
 } & {
-    allTechs: Array<({
-        __typename?: 'Tech';
-    } & Pick<Tech, 'id' | 'name' | 'beschreibung' | 'pic'>)>;
-});
+  allTechs: Array<
+    {
+      __typename?: 'Tech';
+    } & Pick<Tech, 'id' | 'name' | 'beschreibung' | 'pic'>
+  >;
+};
 export declare type AllProjectsQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllProjectsQuery = ({
-    __typename?: 'Query';
+export declare type AllProjectsQuery = {
+  __typename?: 'Query';
 } & {
-    allProjects: Array<({
-        __typename?: 'Project';
-    } & Pick<Project, 'name' | 'beschreibung' | 'url' | 'click'>)>;
-});
+  allProjects: Array<
+    {
+      __typename?: 'Project';
+    } & Pick<Project, 'name' | 'beschreibung' | 'url' | 'click'>
+  >;
+};
 export declare type AllTasksQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllTasksQuery = ({
-    __typename?: 'Query';
+export declare type AllTasksQuery = {
+  __typename?: 'Query';
 } & {
-    allTasks: Array<({
-        __typename?: 'Task';
-    } & Pick<Task, 'name' | 'beschreibung' | 'code' | 'click'>)>;
-});
+  allTasks: Array<
+    {
+      __typename?: 'Task';
+    } & Pick<Task, 'name' | 'beschreibung' | 'code' | 'click'>
+  >;
+};
 export declare type AllUsersQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllUsersQuery = ({
-    __typename?: 'Query';
+export declare type AllUsersQuery = {
+  __typename?: 'Query';
 } & {
-    allUsers: Array<({
-        __typename?: 'User';
-    } & Pick<User, 'nachname' | 'email' | 'id'>)>;
-});
+  allUsers: Array<
+    {
+      __typename?: 'User';
+    } & Pick<User, 'nachname' | 'email' | 'id'>
+  >;
+};
 export declare type GetTaskQueryVariables = Exact<{
-    name: Scalars['String'];
+  name: Scalars['String'];
 }>;
-export declare type GetTaskQuery = ({
-    __typename?: 'Query';
+export declare type GetTaskQuery = {
+  __typename?: 'Query';
 } & {
-    getTask: ({
-        __typename?: 'Task';
-    } & Pick<Task, 'name' | 'beschreibung' | 'code' | 'click'>);
-});
+  getTask: {
+    __typename?: 'Task';
+  } & Pick<Task, 'name' | 'beschreibung' | 'code' | 'click'>;
+};
 export declare type AllDataQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllDataQuery = ({
-    __typename?: 'Query';
+export declare type AllDataQuery = {
+  __typename?: 'Query';
 } & {
-    allProjects: Array<({
-        __typename?: 'Project';
-    } & Pick<Project, 'name' | 'beschreibung' | 'url'>)>;
-    allTasks: Array<({
-        __typename?: 'Task';
-    } & Pick<Task, 'name' | 'beschreibung' | 'code'>)>;
-    allUsers: Array<({
-        __typename?: 'User';
-    } & Pick<User, 'nachname' | 'email' | 'id'>)>;
-    allTechs: Array<({
-        __typename?: 'Tech';
-    } & Pick<Tech, 'id' | 'name' | 'beschreibung' | 'pic'>)>;
-});
+  allProjects: Array<
+    {
+      __typename?: 'Project';
+    } & Pick<Project, 'name' | 'beschreibung' | 'url'>
+  >;
+  allTasks: Array<
+    {
+      __typename?: 'Task';
+    } & Pick<Task, 'name' | 'beschreibung' | 'code'>
+  >;
+  allUsers: Array<
+    {
+      __typename?: 'User';
+    } & Pick<User, 'nachname' | 'email' | 'id'>
+  >;
+  allTechs: Array<
+    {
+      __typename?: 'Tech';
+    } & Pick<Tech, 'id' | 'name' | 'beschreibung' | 'pic'>
+  >;
+};
 export declare type AllPublicDataQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllPublicDataQuery = ({
-    __typename?: 'Query';
+export declare type AllPublicDataQuery = {
+  __typename?: 'Query';
 } & {
-    allProjects: Array<({
-        __typename?: 'Project';
-    } & Pick<Project, 'name' | 'beschreibung' | 'url' | 'click'>)>;
-    allTechs: Array<({
-        __typename?: 'Tech';
-    } & Pick<Tech, 'id' | 'name' | 'beschreibung' | 'pic'>)>;
-});
+  allProjects: Array<
+    {
+      __typename?: 'Project';
+    } & Pick<Project, 'name' | 'beschreibung' | 'url' | 'click'>
+  >;
+  allTechs: Array<
+    {
+      __typename?: 'Tech';
+    } & Pick<Tech, 'id' | 'name' | 'beschreibung' | 'pic'>
+  >;
+};
 export declare type AllTaskIdsQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type AllTaskIdsQuery = ({
-    __typename?: 'Query';
+export declare type AllTaskIdsQuery = {
+  __typename?: 'Query';
 } & {
-    allTaskIds: Array<({
-        __typename?: 'Taskid';
-    } & Pick<Taskid, 'name'>)>;
-});
+  allTaskIds: Array<
+    {
+      __typename?: 'Taskid';
+    } & Pick<Taskid, 'name'>
+  >;
+};
 export declare type SignInMutationVariables = Exact<{
-    email: Scalars['String'];
-    password: Scalars['String'];
+  email: Scalars['String'];
+  password: Scalars['String'];
 }>;
-export declare type SignInMutation = ({
-    __typename?: 'Mutation';
+export declare type SignInMutation = {
+  __typename?: 'Mutation';
 } & {
-    signIn: ({
-        __typename?: 'AuthPayload';
-    } & Pick<AuthPayload, 'token' | 'message'> & {
-        user?: Maybe<({
-            __typename?: 'User';
-        } & Pick<User, 'email' | 'title' | 'nachname'>)>;
-    });
-});
+  signIn: {
+    __typename?: 'AuthPayload';
+  } & Pick<AuthPayload, 'token' | 'message'> & {
+      user?: Maybe<
+        {
+          __typename?: 'User';
+        } & Pick<User, 'email' | 'title' | 'nachname'>
+      >;
+    };
+};
 export declare type CreateUserMutationVariables = Exact<{
-    email: Scalars['String'];
-    password: Scalars['String'];
-    nachname: Scalars['String'];
-    title: Scalars['String'];
+  email: Scalars['String'];
+  password: Scalars['String'];
+  nachname: Scalars['String'];
+  title: Scalars['String'];
 }>;
-export declare type CreateUserMutation = ({
-    __typename?: 'Mutation';
+export declare type CreateUserMutation = {
+  __typename?: 'Mutation';
 } & {
-    createUser: ({
-        __typename?: 'AuthPayload';
-    } & Pick<AuthPayload, 'token'> & {
-        user?: Maybe<({
-            __typename?: 'User';
-        } & Pick<User, 'email' | 'title' | 'nachname'>)>;
-    });
-});
+  createUser: {
+    __typename?: 'AuthPayload';
+  } & Pick<AuthPayload, 'token'> & {
+      user?: Maybe<
+        {
+          __typename?: 'User';
+        } & Pick<User, 'email' | 'title' | 'nachname'>
+      >;
+    };
+};
 export declare type CreateTaskMutationVariables = Exact<{
-    name: Scalars['String'];
-    beschreibung: Scalars['String'];
-    click: Scalars['String'];
-    code: Scalars['String'];
+  name: Scalars['String'];
+  beschreibung: Scalars['String'];
+  click: Scalars['String'];
+  code: Scalars['String'];
 }>;
-export declare type CreateTaskMutation = ({
-    __typename?: 'Mutation';
+export declare type CreateTaskMutation = {
+  __typename?: 'Mutation';
 } & {
-    createTask: ({
-        __typename?: 'Task';
-    } & Pick<Task, 'name' | 'beschreibung' | 'code' | 'click'>);
-});
+  createTask: {
+    __typename?: 'Task';
+  } & Pick<Task, 'name' | 'beschreibung' | 'code' | 'click'>;
+};
 export declare type GetUserQueryVariables = Exact<{
-    [key: string]: never;
+  [key: string]: never;
 }>;
-export declare type GetUserQuery = ({
-    __typename?: 'Query';
+export declare type GetUserQuery = {
+  __typename?: 'Query';
 } & {
-    getUser: ({
-        __typename?: 'User';
-    } & Pick<User, 'email' | 'nachname' | 'title'>);
-});
-export declare const AllTechsDocument: import("graphql").DocumentNode;
-export declare type AllTechsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllTechsQuery, AllTechsQueryVariables>, 'query'>;
-export declare const AllTechsComponent: (props: AllTechsComponentProps) => JSX.Element;
+  getUser: {
+    __typename?: 'User';
+  } & Pick<User, 'email' | 'nachname' | 'title'>;
+};
+export declare const AllTechsDocument: import('graphql').DocumentNode;
+export declare type AllTechsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllTechsQuery,
+    AllTechsQueryVariables
+  >,
+  'query'
+>;
+export declare const AllTechsComponent: (
+  props: AllTechsComponentProps
+) => JSX.Element;
 /**
  * __useAllTechsQuery__
  *
@@ -329,18 +365,49 @@ export declare const AllTechsComponent: (props: AllTechsComponentProps) => JSX.E
  *   },
  * });
  */
-export declare function useAllTechsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllTechsQuery, AllTechsQueryVariables>): ApolloReactCommon.QueryResult<AllTechsQuery, Exact<{
+export declare function useAllTechsQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllTechsQuery,
+    AllTechsQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllTechsQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllTechsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllTechsQuery, AllTechsQueryVariables>): ApolloReactHooks.QueryTuple<AllTechsQuery, Exact<{
+  }>
+>;
+export declare function useAllTechsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllTechsQuery,
+    AllTechsQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllTechsQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare type AllTechsQueryHookResult = ReturnType<typeof useAllTechsQuery>;
-export declare type AllTechsLazyQueryHookResult = ReturnType<typeof useAllTechsLazyQuery>;
-export declare type AllTechsQueryResult = ApolloReactCommon.QueryResult<AllTechsQuery, AllTechsQueryVariables>;
-export declare const AllProjectsDocument: import("graphql").DocumentNode;
-export declare type AllProjectsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllProjectsQuery, AllProjectsQueryVariables>, 'query'>;
-export declare const AllProjectsComponent: (props: AllProjectsComponentProps) => JSX.Element;
+  }>
+>;
+export declare type AllTechsQueryHookResult = ReturnType<
+  typeof useAllTechsQuery
+>;
+export declare type AllTechsLazyQueryHookResult = ReturnType<
+  typeof useAllTechsLazyQuery
+>;
+export declare type AllTechsQueryResult = ApolloReactCommon.QueryResult<
+  AllTechsQuery,
+  AllTechsQueryVariables
+>;
+export declare const AllProjectsDocument: import('graphql').DocumentNode;
+export declare type AllProjectsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllProjectsQuery,
+    AllProjectsQueryVariables
+  >,
+  'query'
+>;
+export declare const AllProjectsComponent: (
+  props: AllProjectsComponentProps
+) => JSX.Element;
 /**
  * __useAllProjectsQuery__
  *
@@ -356,18 +423,49 @@ export declare const AllProjectsComponent: (props: AllProjectsComponentProps) =>
  *   },
  * });
  */
-export declare function useAllProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllProjectsQuery, AllProjectsQueryVariables>): ApolloReactCommon.QueryResult<AllProjectsQuery, Exact<{
+export declare function useAllProjectsQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllProjectsQuery,
+    AllProjectsQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllProjectsQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllProjectsQuery, AllProjectsQueryVariables>): ApolloReactHooks.QueryTuple<AllProjectsQuery, Exact<{
+  }>
+>;
+export declare function useAllProjectsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllProjectsQuery,
+    AllProjectsQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllProjectsQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare type AllProjectsQueryHookResult = ReturnType<typeof useAllProjectsQuery>;
-export declare type AllProjectsLazyQueryHookResult = ReturnType<typeof useAllProjectsLazyQuery>;
-export declare type AllProjectsQueryResult = ApolloReactCommon.QueryResult<AllProjectsQuery, AllProjectsQueryVariables>;
-export declare const AllTasksDocument: import("graphql").DocumentNode;
-export declare type AllTasksComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllTasksQuery, AllTasksQueryVariables>, 'query'>;
-export declare const AllTasksComponent: (props: AllTasksComponentProps) => JSX.Element;
+  }>
+>;
+export declare type AllProjectsQueryHookResult = ReturnType<
+  typeof useAllProjectsQuery
+>;
+export declare type AllProjectsLazyQueryHookResult = ReturnType<
+  typeof useAllProjectsLazyQuery
+>;
+export declare type AllProjectsQueryResult = ApolloReactCommon.QueryResult<
+  AllProjectsQuery,
+  AllProjectsQueryVariables
+>;
+export declare const AllTasksDocument: import('graphql').DocumentNode;
+export declare type AllTasksComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllTasksQuery,
+    AllTasksQueryVariables
+  >,
+  'query'
+>;
+export declare const AllTasksComponent: (
+  props: AllTasksComponentProps
+) => JSX.Element;
 /**
  * __useAllTasksQuery__
  *
@@ -383,18 +481,49 @@ export declare const AllTasksComponent: (props: AllTasksComponentProps) => JSX.E
  *   },
  * });
  */
-export declare function useAllTasksQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllTasksQuery, AllTasksQueryVariables>): ApolloReactCommon.QueryResult<AllTasksQuery, Exact<{
+export declare function useAllTasksQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllTasksQuery,
+    AllTasksQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllTasksQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllTasksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllTasksQuery, AllTasksQueryVariables>): ApolloReactHooks.QueryTuple<AllTasksQuery, Exact<{
+  }>
+>;
+export declare function useAllTasksLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllTasksQuery,
+    AllTasksQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllTasksQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare type AllTasksQueryHookResult = ReturnType<typeof useAllTasksQuery>;
-export declare type AllTasksLazyQueryHookResult = ReturnType<typeof useAllTasksLazyQuery>;
-export declare type AllTasksQueryResult = ApolloReactCommon.QueryResult<AllTasksQuery, AllTasksQueryVariables>;
-export declare const AllUsersDocument: import("graphql").DocumentNode;
-export declare type AllUsersComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllUsersQuery, AllUsersQueryVariables>, 'query'>;
-export declare const AllUsersComponent: (props: AllUsersComponentProps) => JSX.Element;
+  }>
+>;
+export declare type AllTasksQueryHookResult = ReturnType<
+  typeof useAllTasksQuery
+>;
+export declare type AllTasksLazyQueryHookResult = ReturnType<
+  typeof useAllTasksLazyQuery
+>;
+export declare type AllTasksQueryResult = ApolloReactCommon.QueryResult<
+  AllTasksQuery,
+  AllTasksQueryVariables
+>;
+export declare const AllUsersDocument: import('graphql').DocumentNode;
+export declare type AllUsersComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllUsersQuery,
+    AllUsersQueryVariables
+  >,
+  'query'
+>;
+export declare const AllUsersComponent: (
+  props: AllUsersComponentProps
+) => JSX.Element;
 /**
  * __useAllUsersQuery__
  *
@@ -410,23 +539,58 @@ export declare const AllUsersComponent: (props: AllUsersComponentProps) => JSX.E
  *   },
  * });
  */
-export declare function useAllUsersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllUsersQuery, AllUsersQueryVariables>): ApolloReactCommon.QueryResult<AllUsersQuery, Exact<{
+export declare function useAllUsersQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllUsersQuery,
+    AllUsersQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllUsersQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllUsersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllUsersQuery, AllUsersQueryVariables>): ApolloReactHooks.QueryTuple<AllUsersQuery, Exact<{
+  }>
+>;
+export declare function useAllUsersLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllUsersQuery,
+    AllUsersQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllUsersQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare type AllUsersQueryHookResult = ReturnType<typeof useAllUsersQuery>;
-export declare type AllUsersLazyQueryHookResult = ReturnType<typeof useAllUsersLazyQuery>;
-export declare type AllUsersQueryResult = ApolloReactCommon.QueryResult<AllUsersQuery, AllUsersQueryVariables>;
-export declare const GetTaskDocument: import("graphql").DocumentNode;
-export declare type GetTaskComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GetTaskQuery, GetTaskQueryVariables>, 'query'> & ({
-    variables: GetTaskQueryVariables;
-    skip?: boolean;
-} | {
-    skip: boolean;
-});
-export declare const GetTaskComponent: (props: GetTaskComponentProps) => JSX.Element;
+  }>
+>;
+export declare type AllUsersQueryHookResult = ReturnType<
+  typeof useAllUsersQuery
+>;
+export declare type AllUsersLazyQueryHookResult = ReturnType<
+  typeof useAllUsersLazyQuery
+>;
+export declare type AllUsersQueryResult = ApolloReactCommon.QueryResult<
+  AllUsersQuery,
+  AllUsersQueryVariables
+>;
+export declare const GetTaskDocument: import('graphql').DocumentNode;
+export declare type GetTaskComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    GetTaskQuery,
+    GetTaskQueryVariables
+  >,
+  'query'
+> &
+  (
+    | {
+        variables: GetTaskQueryVariables;
+        skip?: boolean;
+      }
+    | {
+        skip: boolean;
+      }
+  );
+export declare const GetTaskComponent: (
+  props: GetTaskComponentProps
+) => JSX.Element;
 /**
  * __useGetTaskQuery__
  *
@@ -443,18 +607,47 @@ export declare const GetTaskComponent: (props: GetTaskComponentProps) => JSX.Ele
  *   },
  * });
  */
-export declare function useGetTaskQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetTaskQuery, GetTaskQueryVariables>): ApolloReactCommon.QueryResult<GetTaskQuery, Exact<{
+export declare function useGetTaskQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    GetTaskQuery,
+    GetTaskQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  GetTaskQuery,
+  Exact<{
     name: string;
-}>>;
-export declare function useGetTaskLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetTaskQuery, GetTaskQueryVariables>): ApolloReactHooks.QueryTuple<GetTaskQuery, Exact<{
+  }>
+>;
+export declare function useGetTaskLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetTaskQuery,
+    GetTaskQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  GetTaskQuery,
+  Exact<{
     name: string;
-}>>;
+  }>
+>;
 export declare type GetTaskQueryHookResult = ReturnType<typeof useGetTaskQuery>;
-export declare type GetTaskLazyQueryHookResult = ReturnType<typeof useGetTaskLazyQuery>;
-export declare type GetTaskQueryResult = ApolloReactCommon.QueryResult<GetTaskQuery, GetTaskQueryVariables>;
-export declare const AllDataDocument: import("graphql").DocumentNode;
-export declare type AllDataComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllDataQuery, AllDataQueryVariables>, 'query'>;
-export declare const AllDataComponent: (props: AllDataComponentProps) => JSX.Element;
+export declare type GetTaskLazyQueryHookResult = ReturnType<
+  typeof useGetTaskLazyQuery
+>;
+export declare type GetTaskQueryResult = ApolloReactCommon.QueryResult<
+  GetTaskQuery,
+  GetTaskQueryVariables
+>;
+export declare const AllDataDocument: import('graphql').DocumentNode;
+export declare type AllDataComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllDataQuery,
+    AllDataQueryVariables
+  >,
+  'query'
+>;
+export declare const AllDataComponent: (
+  props: AllDataComponentProps
+) => JSX.Element;
 /**
  * __useAllDataQuery__
  *
@@ -470,18 +663,47 @@ export declare const AllDataComponent: (props: AllDataComponentProps) => JSX.Ele
  *   },
  * });
  */
-export declare function useAllDataQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllDataQuery, AllDataQueryVariables>): ApolloReactCommon.QueryResult<AllDataQuery, Exact<{
+export declare function useAllDataQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllDataQuery,
+    AllDataQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllDataQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllDataLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllDataQuery, AllDataQueryVariables>): ApolloReactHooks.QueryTuple<AllDataQuery, Exact<{
+  }>
+>;
+export declare function useAllDataLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllDataQuery,
+    AllDataQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllDataQuery,
+  Exact<{
     [key: string]: never;
-}>>;
+  }>
+>;
 export declare type AllDataQueryHookResult = ReturnType<typeof useAllDataQuery>;
-export declare type AllDataLazyQueryHookResult = ReturnType<typeof useAllDataLazyQuery>;
-export declare type AllDataQueryResult = ApolloReactCommon.QueryResult<AllDataQuery, AllDataQueryVariables>;
-export declare const AllPublicDataDocument: import("graphql").DocumentNode;
-export declare type AllPublicDataComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllPublicDataQuery, AllPublicDataQueryVariables>, 'query'>;
-export declare const AllPublicDataComponent: (props: AllPublicDataComponentProps) => JSX.Element;
+export declare type AllDataLazyQueryHookResult = ReturnType<
+  typeof useAllDataLazyQuery
+>;
+export declare type AllDataQueryResult = ApolloReactCommon.QueryResult<
+  AllDataQuery,
+  AllDataQueryVariables
+>;
+export declare const AllPublicDataDocument: import('graphql').DocumentNode;
+export declare type AllPublicDataComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllPublicDataQuery,
+    AllPublicDataQueryVariables
+  >,
+  'query'
+>;
+export declare const AllPublicDataComponent: (
+  props: AllPublicDataComponentProps
+) => JSX.Element;
 /**
  * __useAllPublicDataQuery__
  *
@@ -497,18 +719,49 @@ export declare const AllPublicDataComponent: (props: AllPublicDataComponentProps
  *   },
  * });
  */
-export declare function useAllPublicDataQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllPublicDataQuery, AllPublicDataQueryVariables>): ApolloReactCommon.QueryResult<AllPublicDataQuery, Exact<{
+export declare function useAllPublicDataQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllPublicDataQuery,
+    AllPublicDataQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllPublicDataQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllPublicDataLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllPublicDataQuery, AllPublicDataQueryVariables>): ApolloReactHooks.QueryTuple<AllPublicDataQuery, Exact<{
+  }>
+>;
+export declare function useAllPublicDataLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllPublicDataQuery,
+    AllPublicDataQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllPublicDataQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare type AllPublicDataQueryHookResult = ReturnType<typeof useAllPublicDataQuery>;
-export declare type AllPublicDataLazyQueryHookResult = ReturnType<typeof useAllPublicDataLazyQuery>;
-export declare type AllPublicDataQueryResult = ApolloReactCommon.QueryResult<AllPublicDataQuery, AllPublicDataQueryVariables>;
-export declare const AllTaskIdsDocument: import("graphql").DocumentNode;
-export declare type AllTaskIdsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllTaskIdsQuery, AllTaskIdsQueryVariables>, 'query'>;
-export declare const AllTaskIdsComponent: (props: AllTaskIdsComponentProps) => JSX.Element;
+  }>
+>;
+export declare type AllPublicDataQueryHookResult = ReturnType<
+  typeof useAllPublicDataQuery
+>;
+export declare type AllPublicDataLazyQueryHookResult = ReturnType<
+  typeof useAllPublicDataLazyQuery
+>;
+export declare type AllPublicDataQueryResult = ApolloReactCommon.QueryResult<
+  AllPublicDataQuery,
+  AllPublicDataQueryVariables
+>;
+export declare const AllTaskIdsDocument: import('graphql').DocumentNode;
+export declare type AllTaskIdsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllTaskIdsQuery,
+    AllTaskIdsQueryVariables
+  >,
+  'query'
+>;
+export declare const AllTaskIdsComponent: (
+  props: AllTaskIdsComponentProps
+) => JSX.Element;
 /**
  * __useAllTaskIdsQuery__
  *
@@ -524,19 +777,53 @@ export declare const AllTaskIdsComponent: (props: AllTaskIdsComponentProps) => J
  *   },
  * });
  */
-export declare function useAllTaskIdsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllTaskIdsQuery, AllTaskIdsQueryVariables>): ApolloReactCommon.QueryResult<AllTaskIdsQuery, Exact<{
+export declare function useAllTaskIdsQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    AllTaskIdsQuery,
+    AllTaskIdsQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  AllTaskIdsQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useAllTaskIdsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllTaskIdsQuery, AllTaskIdsQueryVariables>): ApolloReactHooks.QueryTuple<AllTaskIdsQuery, Exact<{
+  }>
+>;
+export declare function useAllTaskIdsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    AllTaskIdsQuery,
+    AllTaskIdsQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  AllTaskIdsQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare type AllTaskIdsQueryHookResult = ReturnType<typeof useAllTaskIdsQuery>;
-export declare type AllTaskIdsLazyQueryHookResult = ReturnType<typeof useAllTaskIdsLazyQuery>;
-export declare type AllTaskIdsQueryResult = ApolloReactCommon.QueryResult<AllTaskIdsQuery, AllTaskIdsQueryVariables>;
-export declare const SignInDocument: import("graphql").DocumentNode;
-export declare type SignInMutationFn = ApolloReactCommon.MutationFunction<SignInMutation, SignInMutationVariables>;
-export declare type SignInComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<SignInMutation, SignInMutationVariables>, 'mutation'>;
-export declare const SignInComponent: (props: SignInComponentProps) => JSX.Element;
+  }>
+>;
+export declare type AllTaskIdsQueryHookResult = ReturnType<
+  typeof useAllTaskIdsQuery
+>;
+export declare type AllTaskIdsLazyQueryHookResult = ReturnType<
+  typeof useAllTaskIdsLazyQuery
+>;
+export declare type AllTaskIdsQueryResult = ApolloReactCommon.QueryResult<
+  AllTaskIdsQuery,
+  AllTaskIdsQueryVariables
+>;
+export declare const SignInDocument: import('graphql').DocumentNode;
+export declare type SignInMutationFn = ApolloReactCommon.MutationFunction<
+  SignInMutation,
+  SignInMutationVariables
+>;
+export declare type SignInComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    SignInMutation,
+    SignInMutationVariables
+  >,
+  'mutation'
+>;
+export declare const SignInComponent: (
+  props: SignInComponentProps
+) => JSX.Element;
 /**
  * __useSignInMutation__
  *
@@ -555,19 +842,45 @@ export declare const SignInComponent: (props: SignInComponentProps) => JSX.Eleme
  *   },
  * });
  */
-export declare function useSignInMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignInMutation, SignInMutationVariables>): ApolloReactHooks.MutationTuple<SignInMutation, Exact<{
+export declare function useSignInMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    SignInMutation,
+    SignInMutationVariables
+  >
+): ApolloReactHooks.MutationTuple<
+  SignInMutation,
+  Exact<{
     email: string;
     password: string;
-}>>;
-export declare type SignInMutationHookResult = ReturnType<typeof useSignInMutation>;
-export declare type SignInMutationResult = ApolloReactCommon.MutationResult<SignInMutation>;
-export declare type SignInMutationOptions = ApolloReactCommon.BaseMutationOptions<SignInMutation, SignInMutationVariables>;
-export declare const CreateUserDocument: import("graphql").DocumentNode;
-export declare type CreateUserMutationFn = ApolloReactCommon.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
-export declare type CreateUserComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<CreateUserMutation, CreateUserMutationVariables>, 'mutation'>;
-export declare const CreateUserComponent: (props: CreateUserComponentProps) => JSX.Element;
+  }>
+>;
+export declare type SignInMutationHookResult = ReturnType<
+  typeof useSignInMutation
+>;
+export declare type SignInMutationResult = ApolloReactCommon.MutationResult<
+  SignInMutation
+>;
+export declare type SignInMutationOptions = ApolloReactCommon.BaseMutationOptions<
+  SignInMutation,
+  SignInMutationVariables
+>;
+export declare const CreateUserDocument: import('graphql').DocumentNode;
+export declare type CreateUserMutationFn = ApolloReactCommon.MutationFunction<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>;
+export declare type CreateUserComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    CreateUserMutation,
+    CreateUserMutationVariables
+  >,
+  'mutation'
+>;
+export declare const CreateUserComponent: (
+  props: CreateUserComponentProps
+) => JSX.Element;
 /**
- * __useCreateUserMutation__
+ * __reateUserMutation__
  *
  * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
  * When your component renders, `useCreateUserMutation` returns a tuple that includes:
@@ -586,19 +899,45 @@ export declare const CreateUserComponent: (props: CreateUserComponentProps) => J
  *   },
  * });
  */
-export declare function useCreateUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>): ApolloReactHooks.MutationTuple<CreateUserMutation, Exact<{
+export declare function useCreateUserMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    CreateUserMutation,
+    CreateUserMutationVariables
+  >
+): ApolloReactHooks.MutationTuple<
+  CreateUserMutation,
+  Exact<{
     email: string;
     password: string;
     nachname: string;
     title: string;
-}>>;
-export declare type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
-export declare type CreateUserMutationResult = ApolloReactCommon.MutationResult<CreateUserMutation>;
-export declare type CreateUserMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
-export declare const CreateTaskDocument: import("graphql").DocumentNode;
-export declare type CreateTaskMutationFn = ApolloReactCommon.MutationFunction<CreateTaskMutation, CreateTaskMutationVariables>;
-export declare type CreateTaskComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<CreateTaskMutation, CreateTaskMutationVariables>, 'mutation'>;
-export declare const CreateTaskComponent: (props: CreateTaskComponentProps) => JSX.Element;
+  }>
+>;
+export declare type CreateUserMutationHookResult = ReturnType<
+  typeof useCreateUserMutation
+>;
+export declare type CreateUserMutationResult = ApolloReactCommon.MutationResult<
+  CreateUserMutation
+>;
+export declare type CreateUserMutationOptions = ApolloReactCommon.BaseMutationOptions<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>;
+export declare const CreateTaskDocument: import('graphql').DocumentNode;
+export declare type CreateTaskMutationFn = ApolloReactCommon.MutationFunction<
+  CreateTaskMutation,
+  CreateTaskMutationVariables
+>;
+export declare type CreateTaskComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    CreateTaskMutation,
+    CreateTaskMutationVariables
+  >,
+  'mutation'
+>;
+export declare const CreateTaskComponent: (
+  props: CreateTaskComponentProps
+) => JSX.Element;
 /**
  * __useCreateTaskMutation__
  *
@@ -619,18 +958,41 @@ export declare const CreateTaskComponent: (props: CreateTaskComponentProps) => J
  *   },
  * });
  */
-export declare function useCreateTaskMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateTaskMutation, CreateTaskMutationVariables>): ApolloReactHooks.MutationTuple<CreateTaskMutation, Exact<{
+export declare function useCreateTaskMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    CreateTaskMutation,
+    CreateTaskMutationVariables
+  >
+): ApolloReactHooks.MutationTuple<
+  CreateTaskMutation,
+  Exact<{
     name: string;
     beschreibung: string;
     click: string;
     code: string;
-}>>;
-export declare type CreateTaskMutationHookResult = ReturnType<typeof useCreateTaskMutation>;
-export declare type CreateTaskMutationResult = ApolloReactCommon.MutationResult<CreateTaskMutation>;
-export declare type CreateTaskMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTaskMutation, CreateTaskMutationVariables>;
-export declare const GetUserDocument: import("graphql").DocumentNode;
-export declare type GetUserComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GetUserQuery, GetUserQueryVariables>, 'query'>;
-export declare const GetUserComponent: (props: GetUserComponentProps) => JSX.Element;
+  }>
+>;
+export declare type CreateTaskMutationHookResult = ReturnType<
+  typeof useCreateTaskMutation
+>;
+export declare type CreateTaskMutationResult = ApolloReactCommon.MutationResult<
+  CreateTaskMutation
+>;
+export declare type CreateTaskMutationOptions = ApolloReactCommon.BaseMutationOptions<
+  CreateTaskMutation,
+  CreateTaskMutationVariables
+>;
+export declare const GetUserDocument: import('graphql').DocumentNode;
+export declare type GetUserComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    GetUserQuery,
+    GetUserQueryVariables
+  >,
+  'query'
+>;
+export declare const GetUserComponent: (
+  props: GetUserComponentProps
+) => JSX.Element;
 /**
  * __useGetUserQuery__
  *
@@ -646,12 +1008,33 @@ export declare const GetUserComponent: (props: GetUserComponentProps) => JSX.Ele
  *   },
  * });
  */
-export declare function useGetUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetUserQuery, GetUserQueryVariables>): ApolloReactCommon.QueryResult<GetUserQuery, Exact<{
+export declare function useGetUserQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    GetUserQuery,
+    GetUserQueryVariables
+  >
+): ApolloReactCommon.QueryResult<
+  GetUserQuery,
+  Exact<{
     [key: string]: never;
-}>>;
-export declare function useGetUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetUserQuery, GetUserQueryVariables>): ApolloReactHooks.QueryTuple<GetUserQuery, Exact<{
+  }>
+>;
+export declare function useGetUserLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetUserQuery,
+    GetUserQueryVariables
+  >
+): ApolloReactHooks.QueryTuple<
+  GetUserQuery,
+  Exact<{
     [key: string]: never;
-}>>;
+  }>
+>;
 export declare type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
-export declare type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
-export declare type GetUserQueryResult = ApolloReactCommon.QueryResult<GetUserQuery, GetUserQueryVariables>;
+export declare type GetUserLazyQueryHookResult = ReturnType<
+  typeof useGetUserLazyQuery
+>;
+export declare type GetUserQueryResult = ApolloReactCommon.QueryResult<
+  GetUserQuery,
+  GetUserQueryVariables
+>;
